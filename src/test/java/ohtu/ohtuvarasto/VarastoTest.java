@@ -3,12 +3,13 @@ package ohtu.ohtuvarasto;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+import static org.hamcrest.CoreMatchers.*;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class VarastoTest {
 
@@ -28,6 +29,25 @@ public class VarastoTest {
     @Test
     public void uudellaVarastollaOikeaTilavuus() {
         assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void konstruktoriLuoVarastoMiinusTilavuus() {
+    	varasto = new Varasto(-1);
+    	assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    
+//    @Test
+//    public void konstruktoriLuoTäydenVarastonYlimaaraHukkaan() {
+//    	varasto = new Varasto(10, 15);
+//    	assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+//    }
+    
+    @Test
+    public void lisaaVarastoonOikeaSaldoYlimaaraPois() {
+    	varasto.lisaaVarastoon(15);
+    	assertThat(varasto.getSaldo(), is(varasto.getTilavuus()));
     }
 
     @Test
