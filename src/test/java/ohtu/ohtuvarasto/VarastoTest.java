@@ -38,16 +38,38 @@ public class VarastoTest {
     }
     
     
-//    @Test
-//    public void konstruktoriLuoTäydenVarastonYlimaaraHukkaan() {
-//    	varasto = new Varasto(10, 15);
-//    	assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
-//    }
+    @Test
+    public void konstruktoriLuoTäydenVarastonYlimaaraHukkaan() {
+    	varasto = new Varasto(10, 15); // tilavuus, alkuSaldo
+    	assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+    	assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void konstruktoriLuoVarastonSaldoPienempiKuinTilavuus() {
+    	varasto = new Varasto(10, 5); // tilavuus, alkuSaldo
+    	assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+    	assertEquals(5, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void konstruktoriLuoNollatunVaraston() {
+    	varasto = new Varasto(-1, -1); // tilavuus, alkuSaldo
+    	assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    	assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
     
     @Test
     public void lisaaVarastoonOikeaSaldoYlimaaraPois() {
     	varasto.lisaaVarastoon(15);
-    	assertThat(varasto.getSaldo(), is(varasto.getTilavuus()));
+    	assertEquals(varasto.getTilavuus(), varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void lisaaVarastoonNegatiivinenSaldo() {
+    	double orgSaldo = varasto.getSaldo();
+    	varasto.lisaaVarastoon(-5);
+    	assertEquals(orgSaldo, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
@@ -83,6 +105,23 @@ public class VarastoTest {
 
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void otaVarastostaKaikkiMitaVoidaan() {
+    	varasto.lisaaVarastoon(10);
+    	
+    	assertEquals(10, varasto.otaVarastosta(15), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negatiivinenVarastostaOtto() {
+    	assertEquals(0, varasto.otaVarastosta(-5), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void toStringPalauttaaOikeanJonon() {
+    	assertThat(varasto.toString(), is("saldo = 0.0, vielä tilaa 10.0"));
     }
 
 }
