@@ -37,3 +37,11 @@ jar {
 }
 
 apply plugin: "jacoco"
+
+#Codecov watches jacoco reports
+jacocoTestReport {
+    reports {
+        xml.enabled true
+	html.enabled true
+    }
+}
