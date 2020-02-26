@@ -40,7 +40,7 @@ public class VarastoTest {
     
     @Test
     public void konstruktoriLuoTäydenVarastonYlimaaraHukkaan() {
-    	varasto = new Varasto(1, 15); // tilavuus, alkuSaldo
+    	varasto = new Varasto(10, 15); // tilavuus, alkuSaldo
     	assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
     	assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
     }
