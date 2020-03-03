@@ -11,10 +11,14 @@ public class Main {
         mehua = new Varasto(100.0);
         olutta = new Varasto(100.0, 20.2);
 
-        varastonLuonninJälkeen();
+        System.out.println("Luonnin jälkeen:");
+        System.out.println("Mehuvarasto: " + mehua);
+        System.out.println("Olutvarasto: " + olutta);
         
-        olutVarastonTilanne();
-        
+        System.out.println("Olutgetterit:");
+        System.out.println("getSaldo()     = " + olutta.getSaldo());
+        System.out.println("getTilavuus    = " + olutta.getTilavuus());
+        System.out.println("paljonkoMahtuu = " + olutta.paljonkoMahtuu());
 
         System.out.println("Mehusetterit:");
         System.out.println("Lisätään 50.7");
@@ -55,19 +59,5 @@ public class Main {
         System.out.println("saatiin " + saatiin);
         System.out.println("Mehuvarasto: " + mehua);
     }
-    
-    private static void varastonLuonninJälkeen() {
-    	System.out.println("Luonnin jälkeen:");
-        System.out.println("Mehuvarasto: " + mehua);
-        System.out.println("Olutvarasto: " + olutta);
-    }
-    
-    private static void olutVarastonTilanne() {
-    	System.out.println("Olutgetterit:");
-        System.out.println("getSaldo()     = " + olutta.getSaldo());
-        System.out.println("getTilavuus    = " + olutta.getTilavuus());
-        System.out.println("paljonkoMahtuu = " + olutta.paljonkoMahtuu());
-    }
-    
-    private static void otaMehua() {}
+
 }
