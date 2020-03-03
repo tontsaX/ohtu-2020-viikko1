@@ -6,11 +6,6 @@
  * user guide available at https://guides.gradle.org/creating-new-gradle-builds/
  */
 
-// check java writing
-plugins {
-    id 'checkstyle'
-}
-
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -37,14 +32,13 @@ mainClassName = 'ohtu.ohtuvarasto.Main'
 
 jar {
     manifest {
-	attributes 'Main-Class':'main.Main'
+	attributes 'Main-Class':'ohtu.ohtuvarasto.Main'
     }
 }
 
 apply plugin: "jacoco"
 
-// Codecov watches jacoco reports
-jacocoTestReport {
+// Codecov watches jacoco reporjacocoTestReport {
     reports {
         xml.enabled true
 	html.enabled true
@@ -56,5 +50,3 @@ jacocoTestReport {
         }))
     }
 }
-
-checkstyleMain.source = 'src/main/java/ohtu'

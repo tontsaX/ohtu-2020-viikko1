@@ -3,20 +3,18 @@ package main;
 import ohtu.ohtuvarasto.Varasto;
 
 public class Main {
+	
+    private static Varasto mehua, olutta;
 
     public static void main(String[] args) {
 
-        Varasto mehua = new Varasto(100.0);
-        Varasto olutta = new Varasto(100.0, 20.2);
+        mehua = new Varasto(100.0);
+        olutta = new Varasto(100.0, 20.2);
 
-        System.out.println("Luonnin jälkeen:");
-        System.out.println("Mehuvarasto: " + mehua);
-        System.out.println("Olutvarasto: " + olutta);
-
-        System.out.println("Olutgetterit:");
-        System.out.println("getSaldo()     = " + olutta.getSaldo());
-        System.out.println("getTilavuus    = " + olutta.getTilavuus());
-        System.out.println("paljonkoMahtuu = " + olutta.paljonkoMahtuu());
+        varastonLuonninJälkeen();
+        
+        olutVarastonTilanne();
+        
 
         System.out.println("Mehusetterit:");
         System.out.println("Lisätään 50.7");
@@ -57,4 +55,19 @@ public class Main {
         System.out.println("saatiin " + saatiin);
         System.out.println("Mehuvarasto: " + mehua);
     }
+    
+    private static void varastonLuonninJälkeen() {
+    	System.out.println("Luonnin jälkeen:");
+        System.out.println("Mehuvarasto: " + mehua);
+        System.out.println("Olutvarasto: " + olutta);
+    }
+    
+    private static void olutVarastonTilanne() {
+    	System.out.println("Olutgetterit:");
+        System.out.println("getSaldo()     = " + olutta.getSaldo());
+        System.out.println("getTilavuus    = " + olutta.getTilavuus());
+        System.out.println("paljonkoMahtuu = " + olutta.paljonkoMahtuu());
+    }
+    
+    private static void otaMehua() {}
 }
